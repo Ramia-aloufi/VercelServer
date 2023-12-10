@@ -10,7 +10,7 @@ dotenv.config()
 const app = express()
 
 const port = process.env.PORT || 8000
-const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017'
+const mongoURL = process.env.MONGO_URL 
 
 
 
@@ -18,7 +18,7 @@ const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017'
 
 const databaseConnect = async()=>{
     try{
-    await mongoose.connect(mongoURL)
+    await mongoose.connect(mongoURL!)
     console.log('Database Connected');
     }catch(err){
         console.log(err);
