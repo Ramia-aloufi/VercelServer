@@ -2,9 +2,9 @@ import express from 'express'
 import dotenv, { config } from 'dotenv'
 import mongoose from 'mongoose'
 
-import productRoute from '../router/product'
-import { dev } from '../config'
-import { Product } from '../models/Product'
+import productRoute from '../src/router/product'
+import { dev } from '../src/config'
+import { Product } from '../src/models/Product'
 
 
 dotenv.config()
