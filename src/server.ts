@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
-import productRoute from './router/product'
+import productRoute from '../router/product'
 
 
 dotenv.config()
