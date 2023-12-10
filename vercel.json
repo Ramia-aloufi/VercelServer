@@ -1,20 +1,19 @@
 {
-    "rewrites": [
+    "version": 2,
+    "builds": [
       {
-        "source": "/api/(.*)",
-        "destination": "/src/controller/$1"
+        "src": "src/server.ts",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "src/server.ts"
       },
       {
-        "source": "/api/router/(.*)",
-        "destination": "/src/router/$1"
-      },
-      {
-        "source": "/api/models/(.*)",
-        "destination": "/src/models/$1"
-      },
-      {
-        "source": "/api/config/(.*)",
-        "destination": "/src/config/$1"
+        "src": "/posts",
+        "dest": "src/server.ts"
       }
     ]
   }
