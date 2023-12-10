@@ -35,6 +35,10 @@ app.get('/',(req,res)=>{
     res.send('hello')
 })
 
+app.get('*',(req,res)=>{
+    res.status(404).send('Sorry, the requested page was not found.');
+})
+
 app.listen(port,()=>{
     console.log(`Server is running at http://localhost:${port}`);
     databaseConnect()
