@@ -14,10 +14,6 @@ const app = express()
 const port = dev.app.port
 const mongoURL = dev.db.url
 
-
-
-
-
 const databaseConnect = async()=>{
     try{
     await mongoose.connect(mongoURL!)
@@ -27,6 +23,7 @@ const databaseConnect = async()=>{
     }
 
 }
+databaseConnect()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -39,7 +36,6 @@ app.get('/',(req,res)=>{
 
 app.get('/posts', async(req,res)=>{
     try{
-        databaseConnect()
         const products = await Product.find()
         res.json({
             message:'gets Posts successfully!',
