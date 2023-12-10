@@ -1,0 +1,41 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore compiled binaries
+*.exe
+*.o
+*.out
+
+# Ignore logs and databases
+*.log
+*.sqlite
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore dependencies specific to a package manager
+# For example, yarn.lock for Yarn or package-lock.json for npm
+yarn.lock
+package-lock.json
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore sensitive or private information
+secrets.json
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore temporary files
+*.tmp
+*.temp
