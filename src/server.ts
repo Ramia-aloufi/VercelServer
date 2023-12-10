@@ -1,16 +1,17 @@
 import express from 'express'
-import dotenv from 'dotenv'
+import dotenv, { config } from 'dotenv'
 import mongoose from 'mongoose'
 
 import productRoute from './router/product'
+import { dev } from './config'
 
 
 dotenv.config()
 
 const app = express()
 
-const port = process.env.PORT || 8000
-const mongoURL = process.env.MONGO_URL 
+const port = dev.app.port
+const mongoURL = dev.db.url
 
 
 
