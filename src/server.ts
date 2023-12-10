@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 
 import productRoute from './router/product'
 import { dev } from './config'
+import { Product } from './models/Product'
 
 
 dotenv.config()
@@ -34,6 +35,20 @@ app.use('/product',productRoute)
 
 app.get('/',(req,res)=>{
     res.send('hello')
+})
+
+app.get('/posts', async(req,res)=>{
+    try{
+        const products = await Product.find()
+        res.json({
+            message:'gets Posts successfully!',
+            payload:products
+        })
+        }catch(err){
+            res.json({
+                error:err
+            })
+        }
 })
 
 app.get('*',(req,res)=>{
