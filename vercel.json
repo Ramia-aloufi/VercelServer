@@ -1,17 +1,23 @@
 {
     "version": 2,
     "builds": [
+      { "src": "src/controller/*.ts", "use": "@now/node" },
+      { "src": "src/router/*.ts", "use": "@now/node" },
+      { "src": "src/models/*.ts", "use": "@now/node" },
+      { "src": "src/config/*.ts", "use": "@now/node" },
+      { "src": "src/server.ts", "use": "@now/node" },
       {
-        "src": "src/server.ts",
-        "use": "@vercel/node"
+        "src": "tsconfig.json",
+        "use": "@now/node"
       }
     ],
     "routes": [
-
-      {
-        "src": "/(.*)",
-        "dest": "src/server.ts"
-      }
+      { "src": "/controller/(.*)", "dest": "/src/controller/$1" },
+      { "src": "/router/(.*)", "dest": "/src/router/$1" },
+      { "src": "/models/(.*)", "dest": "/src/models/$1" },
+      { "src": "/config/(.*)", "dest": "/src/config/$1" },
+      { "src": "/(.*)", "dest": "/src/$1" }
     ]
   }
+  
   
