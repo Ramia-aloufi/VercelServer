@@ -39,6 +39,7 @@ app.get('/',(req,res)=>{
 
 app.get('/posts', async(req,res)=>{
     try{
+        databaseConnect()
         const products = await Product.find()
         res.json({
             message:'gets Posts successfully!',
