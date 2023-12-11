@@ -10,7 +10,7 @@ type Product = {
 function App() {
   const [product, setProduct] = useState<Product[]>([])
   useEffect(()=>{
-    fetch('http://localhost:8000/api/product')
+    fetch('https://vercel-server-rose.vercel.app/api/product')
     .then(res => res.json())
     .then(data => setProduct(data.payload))
     
