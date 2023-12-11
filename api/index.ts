@@ -28,13 +28,13 @@ databaseConnect()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use('api/product',productRoute)
+app.use('/api/product',productRoute)
 
-app.get('api/',(req,res)=>{
+app.get('/api/',(req,res)=>{
     res.send('hello')
 })
 
-app.get('api/posts', async(req,res)=>{
+app.get('/api/posts', async(req,res)=>{
     try{
         const products = await Product.find()
         res.json({
@@ -48,7 +48,7 @@ app.get('api/posts', async(req,res)=>{
         }
 })
 
-app.get('api/*',(req,res)=>{
+app.get('/api/*',(req,res)=>{
     res.status(404).send('Sorry, the requested page was not found.');
 })
 
