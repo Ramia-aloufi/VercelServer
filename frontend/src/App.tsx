@@ -1,33 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
+type Product = {
+  name:string,
+  price:number,
+  description:string
+}
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [product, setProduct] = useState<Product[]>([])
+  useEffect(()=>{
+    fetch('http://localhost:8000/api/product')
+    .then(res => res.json())
+    .then(data => setProduct(data.payload))
+    
+  },[])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <h1>Our products</h1>
+    <div className='cards' style={{display: 'grid', gap: '20px' }}>
+    {product && product.map((product,index)=>{
+      return(
+        <div key={index} style={{ border: '1px solid #ccc', borderRadius: '8px', padding: '16px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }} >
+        <h2>{product.name}</h2>
+        <span>{product.price}</span>
+        </div>
+      )
+    })}
+    </div>
+
     </>
   )
 }

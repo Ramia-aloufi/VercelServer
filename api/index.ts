@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv, { config } from 'dotenv'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 import productRoute from './src/router/product'
 import { dev } from './src/config'
@@ -27,6 +28,7 @@ databaseConnect()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cors())
 
 app.use('/api/product',productRoute)
 
